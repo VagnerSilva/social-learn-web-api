@@ -33,6 +33,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
+            "config": "apps/api/src/app/config/**/*.ts",
             "assets": ["apps/api/src/assets"]
           },
           "configurations": {
