@@ -1,8 +1,4 @@
 {
-  "npmScope": "social-learn-web",
-  "affected": {
-    "defaultBase": "master"
-  },
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
@@ -10,6 +6,10 @@
     },
     ".eslintrc.json": "*"
   },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "social-learn-web",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -19,6 +19,9 @@
     }
   },
   "projects": {
+    "api": {
+      "tags": []
+    },
     "web": {
       "tags": []
     },
