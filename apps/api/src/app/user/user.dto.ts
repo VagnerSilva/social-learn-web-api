@@ -31,8 +31,6 @@ export class UserDto {
   profile: Profile[];
 
   constructor(user: Partial<UserDto>) {
-    console.log('constructor');
-    console.log(user);
     Object.assign(this, user);
   }
 }
