@@ -5,11 +5,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { CONNECTION_STRING, getCredentials } from './config';
+import { EmailModule } from './email/email.module';
 import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 
 @Module({
   imports: [
+    EmailModule,
     UtilsModule,
     AuthModule,
     ConfigModule.forRoot({
