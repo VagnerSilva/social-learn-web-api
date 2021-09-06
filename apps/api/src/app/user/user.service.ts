@@ -28,4 +28,21 @@ export class UserService {
   async findByEmail(email: string): Promise<UserDto> {
     return await this.userRepository.findByEmail(email);
   }
+
+  async changePassword(
+    id: string,
+    password: string,
+    newPassword: string
+  ): Promise<string> {
+    const user = await this.userRepository.findById(id);
+    const isMatch = await user['comparePassword'](password);
+    if (!isMatch) {
+      throw new HttpException('Senha invalida', HttpStatus.BAD_REQUEST);
+    }
+    user.password = newPassword;
+    user.recoverToken = null;
+    await user.save();
+
+    return 'Senha alterada com sucesso.';
+  }
 }

@@ -28,7 +28,7 @@ import { EmailService } from './email.service';
       },
     }),
   ],
-  controllers: [],
   providers: [EmailService],
+  exports: [EmailService],
 })
 export class EmailModule {}

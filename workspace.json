@@ -39,7 +39,7 @@
               {
                 "input": "apps/api/src/app/email/templates",
                 "glob": "**/*.hbs",
-                "output": "apps/api/src/app/email/templates"
+                "output": "templates"
               },
               {
                 "input": "certs",

@@ -6,14 +6,15 @@ import { User } from '../user/user.schema';
 export class EmailService {
   constructor(private mailerService: MailerService) {}
 
-  sendRecoverPasswordEmail(user: User, recoverToken: string) {
+  sendRecoverPasswordEmail(user: User) {
     this.mailerService.sendMail({
       from: process.env.EMAIL_FROM,
       to: user.email,
-      subject: 'Recuperação de senha',
+      subject: 'Recovery password',
       template: './recovery_password',
       context: {
-        token: recoverToken,
+        token: user.recoverToken,
+        domain: process.env.HOST_DOMAIN,
       },
     });
   }

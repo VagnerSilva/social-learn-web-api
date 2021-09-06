@@ -21,6 +21,9 @@ export class User extends BaseSchema {
   @Prop()
   gender: string;
 
+  @Prop()
+  recoverToken: string;
+
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Profile',
