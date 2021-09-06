@@ -1,5 +1,11 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
-import { validate } from 'class-validator';
+import {
+  Body,
+  Controller,
+  HttpStatus,
+  Post,
+  Res,
+  ValidationPipe,
+} from '@nestjs/common';
 import { UserDto } from './user.dto';
 import { UserService } from './user.service';
 
@@ -8,9 +14,7 @@ export class UserController {
   constructor(private readonly userSrv: UserService) {}
 
   @Post('register')
-  async createUser(@Res() res, @Body() userDto: UserDto) {
-    await validate(userDto);
-
+  async createUser(@Res() res, @Body(ValidationPipe) userDto: UserDto) {
     const user = await this.userSrv.createUser(userDto);
     return res.status(HttpStatus.OK).json(user);
   }

@@ -19,8 +19,8 @@ export class UserService {
     if (isInvalid) {
       throw new HttpException('E-mail já cadastrado', HttpStatus.BAD_REQUEST);
     }
-    await this.userRepository.insert(newUser);
-
+    const user = await this.userRepository.insert(newUser);
+    newUser['id'] = user._id;
     return newUser;
   }
 
