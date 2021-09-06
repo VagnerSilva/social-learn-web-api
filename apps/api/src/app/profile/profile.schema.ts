@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
+import { BaseSchema } from '../schemas/base.schema';
 import { User } from '../user/user.schema';
-import { BaseSchema } from './base.schema';
 
 @Schema({
   timestamps: { createdAt: 'createdDate', updatedAt: 'lastModifiedDate' },

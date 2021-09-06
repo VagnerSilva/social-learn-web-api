@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsOptional, MinLength } from 'class-validator';
-import { Profile } from '../schemas/profile.schema';
+import { Profile } from '../profile/profile.schema';
 
 export class UserDto {
   @MinLength(2)
