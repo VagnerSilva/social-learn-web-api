@@ -14,18 +14,21 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.getUser(username);
-    if (user && user.password === pass) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...result } = user;
-      return result;
+  async validateUser(
+    email: string,
+    pass: string
+  ): Promise<Partial<UserDto> | null> {
+    const user = await this.usersService.findByEmail(email);
+    const isMatch = await user['comparePassword'](pass);
+    if (isMatch) {
+      const { name, email } = user;
+      return { name, email };
     }
     return null;
   }
 
   async login(user: UserDto) {
-    const payload = { username: user.name, sub: user.email };
+    const payload = { name: user.name, sub: user.email };
     return {
       access_token: this.jwtService.sign(payload),
     };

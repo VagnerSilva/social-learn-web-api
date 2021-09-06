@@ -34,7 +34,20 @@
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
             "config": "apps/api/src/app/config/**/*.ts",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets",
+              {
+                "input": "apps/api/src/app/email/templates",
+                "glob": "**/*.hbs",
+                "output": "apps/api/src/app/email/templates"
+              },
+              {
+                "input": "certs",
+                "glob": "**/*.pem",
+                "output": "./"
+              }
+            ],
+            "watchAssets": true
           },
           "configurations": {
             "production": {

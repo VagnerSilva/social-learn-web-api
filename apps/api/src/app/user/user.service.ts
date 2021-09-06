@@ -21,10 +21,11 @@ export class UserService {
     }
     const user = await this.userRepository.insert(newUser);
     newUser['id'] = user._id;
+    delete newUser.password;
     return newUser;
   }
 
-  async findById(id: string): Promise<UserDto> {
-    return await this.userRepository.findById(id);
+  async findByEmail(email: string): Promise<UserDto> {
+    return await this.userRepository.findByEmail(email);
   }
 }

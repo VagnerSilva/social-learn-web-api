@@ -30,25 +30,11 @@ export class User extends BaseSchema {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-UserSchema.pre('save', function (next: (value?: any) => void) {
-  // only hash the password if it has been modified (or is new)
-
+UserSchema.pre('save', async function (next: (value?: any) => void) {
   if (!this.isModified('password')) return next();
-
-  // generate a salt
-  genSalt(14, (err, salt) => {
-    if (err) return next(err);
-
-    // hash the password along with our new salt
-    bcrypt.hash(this.password, salt, function (err, hash) {
-      if (err) return next(err);
-
-      // override the cleartext password with the hashed one
-      this.password = hash;
-      next();
-    });
-  });
-  // next()
+  const salt = await genSalt(14);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
 });
 
 UserSchema.methods.comparePassword = function (candidatePassword) {
