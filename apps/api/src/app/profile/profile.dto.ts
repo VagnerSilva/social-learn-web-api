@@ -4,4 +4,8 @@ export class ProfileDto {
   name: string;
   active: boolean;
   user: User[];
+
+  constructor(profile: Partial<ProfileDto>) {
+    Object.assign(this, profile);
+  }
 }
