@@ -44,8 +44,8 @@ export class ProfileService {
     return result as ProfileDto;
   }
 
-  async findAll(): Promise<Profile[]> {
-    return this.profileRepository.findAll();
+  async findAll(): Promise<ProfileDto[]> {
+    return this.profileRepository.findAll() as Promise<ProfileDto[]>;
   }
 
   async inactivate(id: string): Promise<ProfileDto> {
