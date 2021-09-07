@@ -2,13 +2,12 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
 import { compare, genSalt } from 'bcrypt';
 import * as mongoose from 'mongoose';
-import { BaseSchema } from '../schemas/base.schema';
-import { Profile } from '../schemas/profile.schema';
-
+import { Document } from 'mongoose';
+import { Profile } from '../profile/profile.schema';
 @Schema({
   timestamps: { createdAt: 'createdDate', updatedAt: 'lastModifiedDate' },
 })
-export class User extends BaseSchema {
+export class User extends Document {
   @Prop({ required: true, trim: true })
   name: string;
 

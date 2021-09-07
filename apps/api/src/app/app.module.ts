@@ -6,11 +6,13 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { CONNECTION_STRING, getCredentials } from './config';
 import { EmailModule } from './email/email.module';
+import { ProfileModule } from './profile/profile.module';
 import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 
 @Module({
   imports: [
+    ProfileModule,
     EmailModule,
     UtilsModule,
     AuthModule,
