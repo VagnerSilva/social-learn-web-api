@@ -23,7 +23,7 @@ export class ProfileController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('profile/:id')
+  @Get(':id')
   async findById(@Param('id') id: string): Promise<ProfileDto> {
     const result = await this.profileService.findById(id);
     const profile = new ProfileDto(result);
@@ -31,7 +31,7 @@ export class ProfileController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('all')
+  @Get()
   async findAll(): Promise<ProfileDto[]> {
     return this.profileService.findAll();
   }
