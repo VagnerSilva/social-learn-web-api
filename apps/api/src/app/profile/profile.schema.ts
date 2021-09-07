@@ -1,17 +1,16 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
-import { BaseSchema } from '../schemas/base.schema';
+import { Document } from 'mongoose';
 import { User } from '../user/user.schema';
-
 @Schema({
   timestamps: { createdAt: 'createdDate', updatedAt: 'lastModifiedDate' },
 })
-export class Profile extends BaseSchema {
+export class Profile extends Document {
   @Prop()
   name: string;
 
-  @Prop()
-  active = true;
+  @Prop({ default: true })
+  active: boolean;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,

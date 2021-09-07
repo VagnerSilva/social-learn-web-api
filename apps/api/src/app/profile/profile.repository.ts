@@ -5,7 +5,7 @@ import { ProfileDto } from './profile.dto';
 import { Profile } from './profile.schema';
 
 export class ProfileRepository extends BaseRepository<Profile, ProfileDto> {
-  constructor(@InjectModel(Profile.name) private userModel: Model<Profile>) {
-    super(userModel);
+  constructor(@InjectModel(Profile.name) private profileModel: Model<Profile>) {
+    super(profileModel);
   }
 }
