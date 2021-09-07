@@ -25,6 +25,6 @@ export class BaseRepository<T, K> {
   }
 
   async findAll(): Promise<T[]> {
-    return await this.model.find();
+    return await this.model.find().exec();
   }
 }

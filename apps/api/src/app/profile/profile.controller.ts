@@ -31,9 +31,9 @@ export class ProfileController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('all')
+  @Get()
   async findAll(): Promise<ProfileDto[]> {
-    return this.profileService.findAll() as Promise<ProfileDto[]>;
+    return this.profileService.findAll();
   }
 
   @UseGuards(JwtAuthGuard)
