@@ -4,10 +4,12 @@ import { compare, genSalt } from 'bcrypt';
 import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
 import { Profile } from '../profile/profile.schema';
-@Schema({
-  timestamps: { createdAt: 'createdDate', updatedAt: 'lastModifiedDate' },
-})
+import { BaseSchema } from '../utils/base.schema';
+@Schema(BaseSchema)
 export class User extends Document {
+  @Prop()
+  id?: string;
+
   @Prop({ required: true, trim: true })
   name: string;
 

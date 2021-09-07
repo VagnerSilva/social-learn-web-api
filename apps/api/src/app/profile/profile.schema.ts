@@ -7,6 +7,9 @@ import { User } from '../user/user.schema';
 })
 export class Profile extends Document {
   @Prop()
+  id?: string;
+
+  @Prop()
   name: string;
 
   @Prop({ default: true })

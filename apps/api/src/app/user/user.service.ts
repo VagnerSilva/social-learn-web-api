@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserDto } from './user.dto';
 import { UserRepository } from './user.repository';
+import { User } from './user.schema';
 
 @Injectable()
 export class UserService {
@@ -19,9 +20,10 @@ export class UserService {
     if (isInvalid) {
       throw new HttpException('E-mail já cadastrado', HttpStatus.BAD_REQUEST);
     }
-    const user = await this.userRepository.insert(newUser);
-    newUser['id'] = user._id;
+    const user = (await this.userRepository.insert(newUser)) as User;
+
     delete newUser.password;
+    newUser['id'] = user._id;
     return newUser;
   }
 
