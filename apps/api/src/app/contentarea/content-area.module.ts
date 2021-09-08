@@ -13,5 +13,6 @@ import { ContentAreaService } from './content-area.service';
   ],
   controllers: [ContentAreaController],
   providers: [ContentAreaService, ContentAreaRepository],
+  exports: [ContentAreaService],
 })
 export class ContentAreaModule {}

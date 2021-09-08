@@ -1,5 +1,5 @@
 export class ContentAreaDto {
-  id: string;
+  id?: string;
   name: string;
   active: boolean;
 }
