@@ -5,7 +5,7 @@ import { ContentArea } from '../contentArea/content-area.schema';
 import { BaseSchema } from '../utils/base.schema';
 
 @Schema(BaseSchema)
-export class LearnContent extends Document {
+export class LearningContent extends Document {
   @Prop()
   id?: string;
 
@@ -22,4 +22,6 @@ export class LearnContent extends Document {
   active: boolean;
 }
 
-export const LearnContentSchema = SchemaFactory.createForClass(LearnContent);
+export const LearningContentSchema = SchemaFactory.createForClass(
+  LearningContent
+);
