@@ -1,6 +1,6 @@
 import { ContentArea } from '../contentArea/content-area.schema';
 
-export class LearnContentDto {
+export class LearningContentDto {
   id?: string;
 
   name: string;
