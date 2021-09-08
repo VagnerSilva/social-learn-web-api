@@ -9,4 +9,8 @@ export class ContentAreaService extends BaseService<
   ContentArea,
   ContentAreaDto,
   ContentAreaRepository
-> {}
+> {
+  constructor(private readonly contentRepository: ContentAreaRepository) {
+    super(contentRepository);
+  }
+}

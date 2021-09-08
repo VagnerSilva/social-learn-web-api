@@ -5,15 +5,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { CONNECTION_STRING, getCredentials } from './config';
-import { ContentAreaModule } from './contentarea/content-area.module';
-import { ContentAreaService } from './contentarea/content-area.service';
+import { ContentAreaModule } from './contentArea/content-area.module';
 import { EmailModule } from './email/email.module';
+import { LearnContentModule } from './learnContent/learn-content.module';
 import { ProfileModule } from './profile/profile.module';
 import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 
 @Module({
   imports: [
+    LearnContentModule,
     ContentAreaModule,
     ProfileModule,
     EmailModule,
@@ -26,6 +27,6 @@ import { UtilsModule } from './utils/utils.module';
     UserModule,
   ],
   controllers: [AppController],
-  providers: [ContentAreaService, AppService],
+  providers: [AppService],
 })
 export class AppModule {}

@@ -1,11 +1,16 @@
-import { Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { BaseSchema } from '../utils/base.schema';
 
 @Schema(BaseSchema)
 export class ContentArea extends Document {
-  id: string;
+  @Prop()
+  id?: string;
+
+  @Prop()
   name: string;
+
+  @Prop()
   active: boolean;
 }
 
