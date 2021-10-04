@@ -9,6 +9,7 @@
     "api": "nx serve api",
     "api:build": "nx build api",
     "test": "nx test",
+    "test:api": "nx test api",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
@@ -59,6 +60,7 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@golevelup/nestjs-testing": "^0.1.2",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
     "@nrwl/cli": "12.3.6",

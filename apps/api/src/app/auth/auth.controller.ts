@@ -43,7 +43,6 @@ export class AuthController {
     @Body('password') password: string,
     @Body('newPassword') newPassword: string
   ): Promise<string> {
-    console.log(newPassword);
     return await this.userService.changePassword(id, password, newPassword);
   }
 }

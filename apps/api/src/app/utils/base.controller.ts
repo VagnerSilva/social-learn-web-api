@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -22,6 +23,12 @@ export class BaseController<S> {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get('all/items')
+  async all(): Promise<any> {
+    return await this.service.findAll();
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<ProfileDto> {
     const result = await this.service.findById(id);
@@ -30,7 +37,7 @@ export class BaseController<S> {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get()
+  @Get('all/items')
   async findAll(): Promise<ProfileDto[]> {
     return this.service.findAll();
   }
@@ -46,5 +53,11 @@ export class BaseController<S> {
   @Delete('inactivate/:id')
   async delete(@Param('id') id: string): Promise<void> {
     this.service.deleteById(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('update/:id')
+  async update(@Param('id') id: string, @Body() data: any): Promise<void> {
+    await this.service.update(id, data, 'Item atualizado com sucesso.');
   }
 }

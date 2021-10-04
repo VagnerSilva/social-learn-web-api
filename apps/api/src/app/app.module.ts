@@ -12,6 +12,7 @@ import { ProfileModule } from './profile/profile.module';
 import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 
+const credentials = getCredentials();
 @Module({
   imports: [
     LearnContentModule,
@@ -23,9 +24,16 @@ import { UtilsModule } from './utils/utils.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(CONNECTION_STRING, getCredentials()),
+    MongooseModule.forRootAsync({
+      useFactory: async (config: any) => ({
+        uri: CONNECTION_STRING,
+        sslKey: credentials.sslKey,
+        sslCert: credentials.sslCert,
+      }),
+    }),
     UserModule,
   ],
+
   controllers: [AppController],
   providers: [AppService],
 })
