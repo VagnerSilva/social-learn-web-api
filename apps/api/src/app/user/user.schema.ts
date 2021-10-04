@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { compare, genSalt } from 'bcrypt';
 import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
+import { LearningContent } from '../learnContent/learn-content.schema';
 import { Profile } from '../profile/profile.schema';
 import { BaseSchema } from '../utils/base.schema';
 @Schema(BaseSchema)
@@ -30,6 +31,12 @@ export class User extends Document {
     ref: 'Profile',
   })
   profile: Profile[];
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'LearningContent',
+  })
+  learningContents: LearningContent[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
