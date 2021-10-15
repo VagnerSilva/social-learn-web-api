@@ -20,7 +20,7 @@ export class BaseRepository<T, K> {
     return this.model.findByIdAndUpdate(query, data as T);
   }
 
-  async delete(id: string): Promise<Query<T, EnforceDocument<T, T>, T, T>> {
+  async delete(id: string): Promise<Query<T, EnforceDocument<T, T, T>, T, T>> {
     return this.model.remove(id);
   }
 

@@ -1,4 +1,4 @@
-import { ContentArea } from '../contentArea/content-area.schema';
+import { ContentArea } from '../contentarea/content-area.schema';
 
 export class LearningContentDto {
   id?: string;

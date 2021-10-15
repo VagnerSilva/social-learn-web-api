@@ -11,7 +11,10 @@ Projeto foi desenvolvido utilizando o conceito de mono repositório e implementa
 
 ### Projeto web
 
-> **Biblioteca**: [React](https://reactjs.org/) > **Arquitetura**: [MVC](https://pt.wikipedia.org/wiki/MVC)
+> **Biblioteca**: [React](https://reactjs.org/)
+>
+> **Arquitetura**: [MVC](https://pt.wikipedia.org/wiki/MVC)
+>
 > **source**: apps/web
 
 ### Execução
@@ -24,7 +27,11 @@ yarn start
 
 ### Projeto API
 
-> **Framework**: [NestJS](https://nestjs.com/) > **Arquitetura**: [Package by Feature](hhttps://phauer.com/2020/package-by-feature/) > **source**: apps/api
+> **Framework**: [NestJS](https://nestjs.com/)
+>
+> **Arquitetura**: [Package by Feature](https://phauer.com/2020/package-by-feature/)
+>
+> **source**: apps/api
 
 ### Execução
 

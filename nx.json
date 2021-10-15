@@ -9,7 +9,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "social-learn-web",
+  "npmScope": "social-learn-web-api",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",

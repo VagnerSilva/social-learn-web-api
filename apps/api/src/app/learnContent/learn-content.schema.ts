@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
-import { ContentArea } from '../contentArea/content-area.schema';
+import { ContentArea } from '../contentarea/content-area.schema';
 import { BaseSchema } from '../utils/base.schema';
 
 @Schema(BaseSchema)
