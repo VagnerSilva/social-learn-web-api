@@ -14,4 +14,8 @@ export class UserRepository extends BaseRepository<User, UserDto> {
   async findByEmail(email: string): Promise<UserDto> {
     return await this.userModel.findOne({ email: email });
   }
+
+  async findByUsername(username: string): Promise<UserDto> {
+    return await this.userModel.findOne({ name: username });
+  }
 }
