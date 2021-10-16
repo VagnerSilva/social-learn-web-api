@@ -24,6 +24,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
+    console.log(req);
     return this.authService.login(req.user);
   }
 
@@ -43,7 +44,6 @@ export class AuthController {
     @Body('password') password: string,
     @Body('newPassword') newPassword: string
   ): Promise<string> {
-    console.log(newPassword);
     return await this.userService.changePassword(id, password, newPassword);
   }
 }

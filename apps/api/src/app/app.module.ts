@@ -5,21 +5,35 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { CONNECTION_STRING, getCredentials } from './config';
+import { ContentAreaModule } from './contentarea/content-area.module';
 import { EmailModule } from './email/email.module';
+import { LearnContentModule } from './learnContent/learn-content.module';
+import { ProfileModule } from './profile/profile.module';
 import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 
+const credentials = getCredentials();
 @Module({
   imports: [
+    LearnContentModule,
+    ContentAreaModule,
+    ProfileModule,
     EmailModule,
     UtilsModule,
     AuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(CONNECTION_STRING, getCredentials()),
+    MongooseModule.forRootAsync({
+      useFactory: async (config: any) => ({
+        uri: CONNECTION_STRING,
+        sslKey: credentials.sslKey,
+        sslCert: credentials.sslCert,
+      }),
+    }),
     UserModule,
   ],
+
   controllers: [AppController],
   providers: [AppService],
 })

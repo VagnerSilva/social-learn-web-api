@@ -2,13 +2,15 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
 import { compare, genSalt } from 'bcrypt';
 import * as mongoose from 'mongoose';
-import { BaseSchema } from '../schemas/base.schema';
-import { Profile } from '../schemas/profile.schema';
+import { Document } from 'mongoose';
+import { LearningContent } from '../learnContent/learn-content.schema';
+import { Profile } from '../profile/profile.schema';
+import { BaseSchema } from '../utils/base.schema';
+@Schema(BaseSchema)
+export class User extends Document {
+  @Prop()
+  id?: string;
 
-@Schema({
-  timestamps: { createdAt: 'createdDate', updatedAt: 'lastModifiedDate' },
-})
-export class User extends BaseSchema {
   @Prop({ required: true, trim: true })
   name: string;
 
@@ -29,6 +31,12 @@ export class User extends BaseSchema {
     ref: 'Profile',
   })
   profile: Profile[];
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'LearningContent',
+  })
+  learningContents: LearningContent[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

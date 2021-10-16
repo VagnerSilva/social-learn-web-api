@@ -19,20 +19,21 @@ export class AuthService {
   ) {}
 
   async validateUser(
-    email: string,
+    username: string,
     pass: string
   ): Promise<Partial<UserDto> | null> {
-    const user = await this.usersService.findByEmail(email);
+    const user = await this.usersService.findByUsername(username);
     const isMatch = await user['comparePassword'](pass);
     if (isMatch) {
+      const id = user['_id'];
       const { name, email } = user;
-      return { name, email };
+      return { name, email, id };
     }
     return null;
   }
 
   async login(user: UserDto) {
-    const payload = { name: user.name, sub: user.email };
+    const payload = { name: user.name, sub: user.id, email: user.email };
     return {
       access_token: this.jwtService.sign(payload),
     };
