@@ -33,6 +33,21 @@ export class BaseService<S, D, R> {
   }
 
   /**
+   * Busca
+   * @param objData
+   * @param msgError mensagem de erro ao nao encontra dado
+   * @returns any
+   */
+  async find(objData: any): Promise<any> {
+    const data = this.repository.find(objData);
+    if (!data) {
+      throw new HttpException('Item  não encontrado', HttpStatus.BAD_REQUEST);
+    }
+
+    return data;
+  }
+
+  /**
    * atualizar dado
    * @param id
    * @param data

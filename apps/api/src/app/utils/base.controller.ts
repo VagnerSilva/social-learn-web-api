@@ -13,38 +13,32 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { ProfileDto } from '../profile/profile.dto';
 import { BaseService } from './base.service';
 
-export class BaseController<S> {
+export class BaseController<S, D> {
   constructor(private service: S & BaseService<any, any, any>) {}
 
   @UseGuards(JwtAuthGuard)
   @Post('register')
-  async schedule(@Body() profile: ProfileDto): Promise<ProfileDto> {
-    return await this.service.create(profile);
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('all/items')
-  async all(): Promise<any> {
-    return await this.service.findAll();
+  async schedule(@Body() data: D): Promise<D> {
+    return await this.service.create(data);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  async findById(@Param('id') id: string): Promise<ProfileDto> {
+  async findById(@Param('id') id: string): Promise<D> {
     const result = await this.service.findById(id);
-    const profile = new ProfileDto(result);
-    return profile;
+
+    return result;
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('all/items')
+  @Get('all/itens')
   async findAll(): Promise<ProfileDto[]> {
     return this.service.findAll();
   }
 
   @UseGuards(JwtAuthGuard)
   @Patch('inactivate/:id')
-  async inactivate(@Param('id') id: string): Promise<ProfileDto> {
+  async inactivate(@Param('id') id: string): Promise<D> {
     const profile = await this.service.inactivate(id);
     return profile;
   }
@@ -52,6 +46,12 @@ export class BaseController<S> {
   @UseGuards(JwtAuthGuard)
   @Delete('inactivate/:id')
   async delete(@Param('id') id: string): Promise<void> {
+    this.service.deleteById(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('delete/:id')
+  async deleteById(@Param('id') id: string): Promise<void> {
     this.service.deleteById(id);
   }
 

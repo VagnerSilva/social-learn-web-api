@@ -32,6 +32,8 @@ export class UserDto {
   @IsOptional()
   profile: Profile[];
 
+  active?: boolean;
+
   constructor(user: Partial<UserDto>) {
     Object.assign(this, user);
   }

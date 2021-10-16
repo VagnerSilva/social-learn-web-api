@@ -7,5 +7,7 @@ export class LearningContentDto {
 
   contentAreas: ContentArea[];
 
+  contentAreaIds?: string[];
+
   active: boolean;
 }
