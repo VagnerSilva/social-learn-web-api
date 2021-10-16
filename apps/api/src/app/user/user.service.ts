@@ -18,8 +18,10 @@ export class UserService {
   async createUser(newUser: UserDto): Promise<UserDto> {
     const isInvalid = await this.userRepository.findByUsername(newUser.name);
     if (isInvalid) {
-      throw new HttpException('Username já cadastrado', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Usuário já cadastrado', HttpStatus.BAD_REQUEST);
     }
+
+    newUser.active = true;
     const user = (await this.userRepository.insert(newUser)) as User;
 
     delete newUser.password;

@@ -1,5 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
 import { ContentArea } from '../contentarea/content-area.schema';
 import { BaseSchema } from '../utils/base.schema';
@@ -12,10 +11,7 @@ export class LearningContent extends Document {
   @Prop()
   name: string;
 
-  @Prop({
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'ContentArea',
-  })
+  @Prop()
   contentAreas: ContentArea[];
 
   @Prop()

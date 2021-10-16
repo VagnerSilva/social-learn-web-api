@@ -21,7 +21,7 @@ export class BaseRepository<T, K> {
   }
 
   async delete(id: string): Promise<Query<T, EnforceDocument<T, T, T>, T, T>> {
-    return this.model.remove(id);
+    return this.model.remove({ _id: id });
   }
 
   async findAll(): Promise<T[]> {

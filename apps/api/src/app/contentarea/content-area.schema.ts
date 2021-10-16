@@ -5,10 +5,13 @@ import { BaseSchema } from '../utils/base.schema';
 @Schema(BaseSchema)
 export class ContentArea extends Document {
   @Prop()
-  id?: string;
+  _id?: string;
 
   @Prop()
-  name: string;
+  name?: string;
+
+  @Prop()
+  title?: string;
 
   @Prop()
   active: boolean;
