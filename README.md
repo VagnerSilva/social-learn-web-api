@@ -9,22 +9,6 @@ Assim como o desenvolvimento de uma API, em node, que deverá ser consumida pelo
 
 Projeto foi desenvolvido utilizando o conceito de mono repositório e implementado através da ferramenta [NX](https://nx.dev/)
 
-### Projeto web
-
-> **Biblioteca**: [React](https://reactjs.org/)
->
-> **Arquitetura**: [MVC](https://pt.wikipedia.org/wiki/MVC)
->
-> **source**: apps/web
-
-### Execução
-
-```batch
-npm run start
-
-yarn start
-```
-
 ### Projeto API
 
 > **Framework**: [NestJS](https://nestjs.com/)
@@ -36,7 +20,7 @@ yarn start
 ### Execução
 
 ```batch
-npm run start:api
+npm run start
 
-yarn start:api
+yarn start
 ```
